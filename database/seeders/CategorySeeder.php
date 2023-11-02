@@ -23,10 +23,10 @@ class CategorySeeder extends Seeder
             "FULL-STACK",
         ];
         foreach ($_categories as $_category) {
-            $project = new Category();
-            $project->label = $_category;
-            $project->color = $faker->hexColor();
-            $project->save();
+            $category = new Category();
+            $category->label = $_category;
+            $category->color = $faker->hexColor();
+            $category->save();
         }
     }
 }

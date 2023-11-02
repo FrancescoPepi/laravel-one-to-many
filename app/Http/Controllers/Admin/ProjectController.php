@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
@@ -18,8 +19,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $category = Category::all();
         $projects = Project::orderBy("id", "desc")->paginate(10);
-        return view("admin.project.index", compact("projects"));
+        return view("admin.projects.index", compact("projects", "category"));
     }
 
     /**
@@ -29,7 +31,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.project.create");
+        return view("admin.projects.create");
     }
 
     /**
@@ -56,7 +58,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view("admin.project.show", compact("project"));
+        return view("admin.projects.show", compact("project"));
     }
 
     /**
@@ -67,7 +69,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("admin.project.edit", compact("project"));
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -83,7 +85,7 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($project->name);
         $project->save();
-        return redirect()->route("admin.project.show", $project);
+        return redirect()->route("admin.projects.show", $project);
     }
 
     /**
@@ -95,6 +97,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route("admin.project.index");
+        return redirect()->route("admin.projects.index");
     }
 }

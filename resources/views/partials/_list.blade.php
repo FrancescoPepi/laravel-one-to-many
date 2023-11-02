@@ -4,7 +4,7 @@
 
             <th scope="col">ID</th>
             <th scope="col">Nome Progetto</th>
-            <th scope="col">Genere</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Descrizione</th>
             <th scope="col">Data Creazione</th>
             <th scope="col">Ultima Modifica</th>
@@ -17,7 +17,7 @@
             <tr>
                 <th scope="row">{{ $project->id }}</th>
                 <td scope="col">{{ $project->name }}</td>
-                <td scope="col">{{ $project->genre }}</td>
+                <td scope="col">{{ $project->project_id }}</td>
                 <td scope="col">{{ mb_strimwidth($project->description, 0, 50, '...') }}</td>
                 <td scope="col">{{ $project->created_at }}</td>
                 <td scope="col">{{ $project->updated_at }}</td>

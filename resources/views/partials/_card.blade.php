@@ -12,7 +12,7 @@
             </div>
             <div class="col">
                 <strong>Genere: </strong>
-                {{ $project->genre }}
+                {{ $project->category_id }}
             </div>
             <div class="col">
                 <strong>Slug del Progetto: </strong>
