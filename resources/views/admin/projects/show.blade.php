@@ -10,10 +10,10 @@
     <section class="container mt-5">
         <div class="row">
             <div class="mb-3">
-                <a href="{{ route('admin.project.index') }}" class="btn btn-primary" style="color: #ffffff;">
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-primary" style="color: #ffffff;">
                     <i class="fa-solid fa-arrow-left-long"></i>
                     BACK</a>
-                <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-primary" style="color: #ffffff;">
+                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary" style="color: #ffffff;">
                     <i class="fa-solid fa-pencil"></i>
                     EDIT</a>
             </div>

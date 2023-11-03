@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])
   ->group(function () {
 
     // Route::get('/', [AdminPageController::class, 'index'])->name('home');
-    Route::resource("/project", AdminProjectController::class);
+    Route::resource("/projects", AdminProjectController::class);
 
 
   });

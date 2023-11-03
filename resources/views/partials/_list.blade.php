@@ -17,19 +17,19 @@
             <tr>
                 <th scope="row">{{ $project->id }}</th>
                 <td scope="col">{{ $project->name }}</td>
-                <td scope="col">{{ $project->project_id }}</td>
+                <td scope="col">{{ $project->category?->label }}</td>
                 <td scope="col">{{ mb_strimwidth($project->description, 0, 50, '...') }}</td>
                 <td scope="col">{{ $project->created_at }}</td>
                 <td scope="col">{{ $project->updated_at }}</td>
                 <td scope="col">
                     <div class="d-flex align-items-center">
                         <div>
-                            <a href="{{ route('admin.project.edit', $project) }}" class="btn mx-1">
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn mx-1">
                                 <i class="fa-solid fa-pencil" style="color: #1f2e51;"></i>
                             </a>
                         </div>
                         <div>
-                            <a href="{{ route('admin.project.show', $project) }}" class="btn mx-1">
+                            <a href="{{ route('admin.projects.show', $project) }}" class="btn mx-1">
                                 <i class="fa-solid fa-eye" style="color: #4d94e7;"></i>
                             </a>
                         </div>

@@ -11,8 +11,8 @@
                 {{ $project->name }}
             </div>
             <div class="col">
-                <strong>Genere: </strong>
-                {{ $project->category_id }}
+                <strong>Categoria: </strong>
+                {{ $project->category ? $project->category->label : 'nessuna categoria' }}
             </div>
             <div class="col">
                 <strong>Slug del Progetto: </strong>

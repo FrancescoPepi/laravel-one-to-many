@@ -23,8 +23,9 @@ class ProjectSeeder extends Seeder
         $category_ids = Category::all()->pluck('id');
 
         for ($i = 0; $i < 50; $i++) {
+            $category_id = $faker->randomElement($category_ids);
             $project = new Project();
-            $project->project_id = $faker->randomElement($category_ids);
+            $project->category_id = $category_id;
             $project->name = $faker->sentence(4);
             $project->description = $faker->paragraph();
             $project->slug = Str::slug($project->name);

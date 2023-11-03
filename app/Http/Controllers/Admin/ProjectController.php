@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Category;
 use Illuminate\Support\Str;
@@ -31,7 +32,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.projects.create");
+        $categories = Category::all();
+        return view("admin.projects.create", compact("categories"));
     }
 
     /**
@@ -47,7 +49,7 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($project->name);
         $project->save();
-        return redirect()->route("admin.project.index");
+        return redirect()->route("admin.projects.index");
     }
 
     /**
@@ -69,7 +71,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("admin.projects.edit", compact("project"));
+        $categories = Category::all();
+        return view("admin.projects.edit", compact("project", "categories"));
     }
 
     /**
@@ -79,7 +82,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
         $project->fill($data);

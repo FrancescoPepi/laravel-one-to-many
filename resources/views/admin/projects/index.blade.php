@@ -12,7 +12,7 @@
             {{ __('Dashboard') }}
         </h2>
         <div class="mb-3">
-            <a href="{{ route('admin.project.create') }}" class="btn btn-success" style="color: #ffffff;">
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-success" style="color: #ffffff;">
                 <i class="fa-solid fa-plus"></i>
                 NEW </a>
         </div>

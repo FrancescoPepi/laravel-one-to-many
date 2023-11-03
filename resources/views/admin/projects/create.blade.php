@@ -10,14 +10,14 @@
     <section class="container mt-5">
         <div class="row">
             <div class="mb-3">
-                <a href="{{ route('admin.project.index') }}" class="btn btn-primary">GO BACK</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">GO BACK</a>
             </div>
             <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
                         <h3>Inserisci il tuo articolo</h3>
                     </div>
-                    <form action="{{ route('admin.project.store') }}" method="POST" class="card-body">
+                    <form action="{{ route('admin.projects.store') }}" method="POST" class="card-body">
                         @csrf
                         <div class="d-flex">
                             <div class="mb-3  me-2 col">
@@ -30,11 +30,20 @@
                             </div>
 
                             <div class="mb-3 col">
-                                <label for="genre" class="form-label">Genere</label>
-                                <input type="text" class="form-control @error('genre') is-invalid @enderror"
-                                    value="{{ old('genre') }}" id="genre" name="genre">
-                                @error('genre')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                <label for="category_id" class="form-label">Categoria</label>
+                                <select name="category_id" id="category_id"
+                                    class="form-select @error('category_id') is-invalid @enderror">
+                                    <option value="">Non categorizzato</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            @if (old('category_id') == $category->id) selected @endif>{{ $category->label }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                         </div>
